@@ -7,24 +7,16 @@ const city = ref('')
 let message = ref('');
 const router = useRouter() 
 
-const search = () => {
+
+const apiWeather = () => {
   message.value = '';
-  axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${city.value}&appid=0a06f95727a0a65a8165050db073611c`)
+  axios.get(`https://backendprevisao-production.up.railway.app/dados/${city.value}`)	
     .then(response => {
-      apiWeather(response.data[0].lat,response.data[0].lon)
-    })
-    .catch(error => {
-      message.value = 'Cidade não encontrada';
-    })
-}
-const apiWeather = (lat,lon) => {
-  axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=0a06f95727a0a65a8165050db073611c&units=metric&lang=pt_br`)	
-    .then(response => {
-      localStorage.setItem('city', JSON.stringify(response.data));
+      localStorage.setItem('city', JSON.stringify(response));
       router.push('/previsao');
     })
     .catch(error => {
-      console.log(error);
+      message.value = 'Cidade não encontrada';
     })
 }
 </script>
@@ -35,7 +27,7 @@ const apiWeather = (lat,lon) => {
       <h1 class="text-center text font-semibold	">Coloque o nome da cidade para fazer a previsão</h1>
       <div>
         <input placeholder=" cidade..." class="p-1 shadow-md border-black border rounded-l-sm	" v-model="city" type="text">
-        <button class="p-1 shadow-md text-white border rounded-r-sm border-sky-700 bg-sky-700" @click="search">enviar</button>
+        <button class="p-1 shadow-md text-white border rounded-r-sm border-sky-700 bg-sky-700" @click="apiWeather">enviar</button>
       </div>
       <small class="text-red-600" v-if="message">{{ message }}</small>
     </div>
