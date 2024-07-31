@@ -1,5 +1,5 @@
 <script setup>
-import {ref,reactive} from 'vue'
+import {ref} from 'vue'
 import {useRouter} from 'vue-router'
 import axios from 'axios'
 
@@ -21,7 +21,7 @@ const apiWeather = (lat,lon) => {
   axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=0a06f95727a0a65a8165050db073611c&units=metric&lang=pt_br`)	
     .then(response => {
       localStorage.setItem('city', JSON.stringify(response.data));
-      router.push('previsao');
+      router.push('/previsao');
     })
     .catch(error => {
       console.log(error);
