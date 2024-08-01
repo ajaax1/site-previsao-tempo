@@ -10,7 +10,7 @@ const router = useRouter()
 
 const apiWeather = () => {
   message.value = '';
-  axios.get(`https://backendprevisao-production.up.railway.app/dados/${city.value}`)	
+  axios.get(`https://backendprevisao-production.up.railway.app/api/dados/${city.value}`)	
     .then(response => {
       localStorage.setItem('city', JSON.stringify(response));
       router.push('/previsao');
