@@ -1,9 +1,10 @@
 <script setup>
-import { list } from 'postcss';
 import { onMounted, reactive, ref } from 'vue';
 import Chart from 'chart.js/auto';
 
-let lista = JSON.parse(localStorage.getItem('city')).list;
+let lista = JSON.parse(localStorage.getItem('city')).data.list;
+let city = JSON.parse(localStorage.getItem('city')).data.city;
+
 const buscarDias = (day) => {
   let data = new Date(day);
   let dia = data.getDay();
@@ -253,6 +254,7 @@ const config = {
 <template>
   <main class="bg-teal-600 w-full h-screen flex-col flex justify-center items-center">
     <div class="bg-white p-3 w-full max-w-md rounded-lg shadow-2xl">
+      <h1 class="text-center">{{ city.name }}</h1>
       <div>
         <div id="myChartContainer">
           <div class="flex items-center justify-between">
