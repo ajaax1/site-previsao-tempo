@@ -1,9 +1,11 @@
 <script setup>
 import { onMounted, reactive, ref } from 'vue';
 import Chart from 'chart.js/auto';
+import { useRouter } from 'vue-router';
 
 let lista = JSON.parse(localStorage.getItem('city')).data.list;
 let city = JSON.parse(localStorage.getItem('city')).data.city;
+const router = useRouter() 
 
 const buscarDias = (day) => {
   let data = new Date(day);
@@ -253,6 +255,8 @@ const config = {
 </script>
 <template>
   <main class="bg-teal-600 w-full h-screen flex-col flex justify-center items-center">
+    <button class="mb-2 p-1 shadow-md text-white border rounded-sm border-sky-700 bg-sky-700" @click="      router.push('/');
+    ">voltar</button>
     <div class="bg-white p-3 w-full max-w-md rounded-lg shadow-2xl">
       <h1 class="text-center">{{ city.name }}</h1>
       <div>

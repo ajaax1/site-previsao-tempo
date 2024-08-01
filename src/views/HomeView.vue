@@ -27,7 +27,7 @@ const apiWeather = () => {
       <h1 class="text-center text font-semibold	">Coloque o nome da cidade para fazer a previsão</h1>
       <div>
         <input placeholder=" cidade..." class="p-1 shadow-md border-black border rounded-l-sm	" v-model="city" type="text">
-        <button class="p-1 shadow-md text-white border rounded-r-sm border-sky-700 bg-sky-700" @click="apiWeather">enviar</button>
+        <button class="p-1 shadow-md text-white border rounded-r-sm border-sky-700 bg-sky-700" @click="apiWeather">buscar</button>
       </div>
       <small class="text-red-600" v-if="message">{{ message }}</small>
     </div>
