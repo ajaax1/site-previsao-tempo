@@ -191,9 +191,9 @@ while (valueOne < 5) {
 }
 let data = reactive({dayOne, dayTwo, dayThree, dayFour, dayFive});
 let selectDay = ref(0);
-let imgNublado = '@/assets/img/nublado.png';
-let imgSol = '@/assets/img/sol.png';
-let imgChuva = '@/assets/img/chuva.png';
+let imgNublado = '@/assets/nublado.png';
+let imgSol = '@/assets/sol.png';
+let imgChuva = '@/assets/chuva.png';
 let indice = ref('dayOne');
 let showHour = ref(false);
 
